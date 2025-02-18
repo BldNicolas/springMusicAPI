@@ -71,11 +71,11 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable()) // Désactivation de CSRF, nécésaire pour JWT
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Application de la config CORS
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Accès admin
-                        .requestMatchers("/user/**").hasRole("USER") // Accès étudiant
-                        .requestMatchers("/tester/**").hasRole("TESTER") // Accès enseignant
+                        .requestMatchers("/scrap").hasRole("SCRAPPER") // Accès scrapper
+                        .requestMatchers("/create", "/get", "/update", "/delete").hasRole("CRUDER") // Accès cruder
+                        .requestMatchers("/bounce").hasRole("BOUNCER") // Accès bouncer
                         // Accès public a certaines routes, notamment la page d'accueil, l'inscription et le login
-                        .requestMatchers("/", "/index", "/test", "/test/*", "/api/users/register", "/api/login").permitAll()
+                        .requestMatchers("/", "/index", "/api/users/register", "/api/login").permitAll()
                         .anyRequest().authenticated() // Toutes les autres requêtes nécessitent une authentification
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // Ajout du filtre JWT, permettant de vérifier le token et le rôle de l'utilisateur
