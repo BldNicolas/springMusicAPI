@@ -21,7 +21,7 @@ CREATE TABLE IF NOT exists users_roles (
 
 # Le nom des roles doit commencer par ROLE_ en spring security
 INSERT INTO roles (name) VALUES
-('ROLE_ADMIN'),
-('ROLE_USER'),
-('ROLE_TESTER')
+('ROLE_SCRAPPER'),
+('ROLE_CRUDER'),
+('ROLE_BOUNCER')
 ;
