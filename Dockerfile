@@ -4,7 +4,7 @@ FROM mysql:8.0
 # Set environment variables for MySQL configuration
 # ROOT_PASSWORD, USER, and PASSWORD should be provided during container runtime
 ENV MYSQL_ROOT_PASSWORD=password
-ENV MYSQL_DATABASE=security_db
+ENV MYSQL_DATABASE=music_db
 ENV MYSQL_USER=root
 ENV MYSQL_PASSWORD=password
 
