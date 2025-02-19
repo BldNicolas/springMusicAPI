@@ -31,4 +31,10 @@ public class ArtistController {
         Artist artist = artistService.scrapArtist(name);
         return artist;
     }
+
+    @GetMapping("/{name}/get")
+    public Artist getArtist(@PathVariable String name) {
+        Artist artist = artistService.getArtist(name);
+        return artist;
+    }
 }

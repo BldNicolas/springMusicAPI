@@ -46,4 +46,8 @@ public class ArtistService {
         artist.setNbAlbum(deezerArtist.getNbAlbum());
         return artist;
     }
+
+    public Artist getArtist(String name) {
+        return artistRepository.findByName(name).orElse(null);
+    }
 }
