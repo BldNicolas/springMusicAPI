@@ -25,4 +25,10 @@ public class ArtistController {
         DeezerArtist deezerArtist = artistService.bounceArtist(name);
         return deezerArtist;
     }
+
+    @GetMapping("/{name}/scrap")
+    public Artist scrapArtist(@PathVariable String name) {
+        Artist artist = artistService.scrapArtist(name);
+        return artist;
+    }
 }
