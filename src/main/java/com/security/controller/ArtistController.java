@@ -1,6 +1,7 @@
 package com.security.controller;
 
 import com.security.entity.Artist;
+import com.security.entity.DeezerArtist;
 import com.security.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class ArtistController {
     }
 
     @GetMapping("/{name}/bounce")
-    public Object artist(@PathVariable String name) {
-        Object artist = artistService.bounceArtist(name);
-        return artist;
+    public DeezerArtist artist(@PathVariable String name) {
+        DeezerArtist deezerArtist = artistService.bounceArtist(name);
+        return deezerArtist;
     }
 }

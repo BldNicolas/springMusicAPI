@@ -1,6 +1,7 @@
 package com.security.service;
 
 import com.security.entity.Artist;
+import com.security.entity.DeezerArtist;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,12 +17,12 @@ public class ArtistService {
         this.restClient = RestClient.create();
     }
 
-    public Object bounceArtist(String name) {
+    public DeezerArtist bounceArtist(String name) {
         String url = deezerUrl + "/artist/" + name;
-        Object test = restClient.get()
+        DeezerArtist deezerArtist = restClient.get()
                 .uri(url)
                 .retrieve()
-                .body(Object.class);
-        return test;
+                .body(DeezerArtist.class);
+        return deezerArtist;
     }
 }
