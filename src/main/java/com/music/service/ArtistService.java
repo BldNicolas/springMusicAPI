@@ -17,10 +17,10 @@ public class ArtistService {
     @Autowired
     private final ArtistRepository artistRepository;
 
-    public ArtistService(@Value("${deezer.url}") String deezerUrl, ArtistRepository artistRepository) {
-        this.deezerUrl = deezerUrl;
+    public ArtistService(ArtistRepository artistRepository, ArtistMapping artistMapping, RestClient restClient, String deezerUrl) {
         this.artistRepository = artistRepository;
         this.restClient = RestClient.create();
+        this.restClient = restClient;
     }
 
     public DeezerArtist bounceArtist(String name) {
