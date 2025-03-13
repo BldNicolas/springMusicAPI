@@ -31,7 +31,7 @@ public class ArtistController {
         return artistService.get(name);
     }
 
-    @PostMapping ("/create")
+    @PostMapping("/create")
     public ArtistDTO create(@RequestBody ArtistDTO artistDto) {
         return artistService.create(artistDto);
     }
