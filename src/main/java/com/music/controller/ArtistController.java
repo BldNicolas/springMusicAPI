@@ -28,4 +28,9 @@ public class ArtistController {
     public ArtistDTO scrapArtist(@PathVariable String name) {
         return artistService.scrapArtist(name);
     }
+
+    @GetMapping("/{name}/get")
+    public ArtistDTO getArtist(@PathVariable String name) {
+        return artistService.getArtist(name);
+    }
 }

@@ -46,7 +46,8 @@ public class ArtistService {
         return artistMapping.entityToDto(savedArtist);
     }
 
-    public Artist getArtist(String name) {
-        return artistRepository.findByName(name).orElse(null);
+    public ArtistDTO getArtist(String name) {
+        Artist artist = artistRepository.findByName(name).orElse(null);
+        return artistMapping.entityToDto(artist);
     }
 }
