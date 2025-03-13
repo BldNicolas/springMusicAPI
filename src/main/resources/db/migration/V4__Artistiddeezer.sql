@@ -1,0 +1,2 @@
+ALTER TABLE artists
+ADD COLUMN id_deezer BIGINT UNIQUE;
