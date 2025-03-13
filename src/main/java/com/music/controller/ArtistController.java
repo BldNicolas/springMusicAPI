@@ -40,4 +40,9 @@ public class ArtistController {
     public ArtistDTO update(@PathVariable Long id, @RequestBody ArtistDTO artistDto) {
         return artistService.update(id, artistDto);
     }
+
+    @DeleteMapping("/{id}/delete")
+    public void delete(@PathVariable Long id) {
+        artistService.delete(id);
+    }
 }

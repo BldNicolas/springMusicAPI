@@ -61,4 +61,11 @@ public class ArtistService {
         Artist savedArtist = artistRepository.save(artist);
         return artistMapping.entityToDto(savedArtist);
     }
+
+    public void delete(Long id) {
+        Artist artist = artistRepository.findById(id).orElse(null);
+        if (artist != null) {
+            artistRepository.delete(artist);
+        }
+    }
 }
