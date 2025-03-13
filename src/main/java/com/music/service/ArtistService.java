@@ -55,14 +55,14 @@ public class ArtistService {
         return artistMapping.entityToDto(savedArtist);
     }
 
-    public ArtistDTO update(Long id, ArtistDTO artistDTO) {
+    public ArtistDTO update(Integer id, ArtistDTO artistDTO) {
         Artist artist = artistMapping.dtoToEntity(artistDTO);
         artist.setId(id);
         Artist savedArtist = artistRepository.save(artist);
         return artistMapping.entityToDto(savedArtist);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Artist artist = artistRepository.findById(id).orElse(null);
         if (artist != null) {
             artistRepository.delete(artist);

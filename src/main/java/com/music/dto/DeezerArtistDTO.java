@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class DeezerArtistDTO {
-    private Long id;
+    private Integer id;
 
     private String name;
 

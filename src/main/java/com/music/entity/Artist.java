@@ -13,9 +13,9 @@ import lombok.*;
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    private Long idDeezer;
+    private Integer idDeezer;
 
     @Column(nullable = false)
     private String name;

@@ -37,12 +37,12 @@ public class ArtistController {
     }
 
     @PostMapping("/{id}/update")
-    public ArtistDTO update(@PathVariable Long id, @RequestBody ArtistDTO artistDto) {
+    public ArtistDTO update(@PathVariable Integer id, @RequestBody ArtistDTO artistDto) {
         return artistService.update(id, artistDto);
     }
 
     @DeleteMapping("/{id}/delete")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         artistService.delete(id);
     }
 }

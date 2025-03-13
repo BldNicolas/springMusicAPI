@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class ArtistDTO {
-    private Long idDeezer;
+    private Integer idDeezer;
 
     private String name;
 
