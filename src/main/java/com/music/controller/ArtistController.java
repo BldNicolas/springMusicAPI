@@ -35,4 +35,9 @@ public class ArtistController {
     public ArtistDTO create(@RequestBody ArtistDTO artistDto) {
         return artistService.create(artistDto);
     }
+
+    @PostMapping("/{id}/update")
+    public ArtistDTO update(@PathVariable Long id, @RequestBody ArtistDTO artistDto) {
+        return artistService.update(id, artistDto);
+    }
 }

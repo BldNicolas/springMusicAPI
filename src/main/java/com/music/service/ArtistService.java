@@ -54,4 +54,11 @@ public class ArtistService {
         Artist savedArtist = artistRepository.save(artist);
         return artistMapping.entityToDto(savedArtist);
     }
+
+    public ArtistDTO update(Long id, ArtistDTO artistDTO) {
+        Artist artist = artistMapping.dtoToEntity(artistDTO);
+        artist.setId(id);
+        Artist savedArtist = artistRepository.save(artist);
+        return artistMapping.entityToDto(savedArtist);
+    }
 }
