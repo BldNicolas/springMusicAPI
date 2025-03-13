@@ -30,4 +30,9 @@ public class ArtistController {
     public ArtistDTO get(@PathVariable String name) {
         return artistService.get(name);
     }
+
+    @PostMapping ("/create")
+    public ArtistDTO create(@RequestBody ArtistDTO artistDto) {
+        return artistService.create(artistDto);
+    }
 }

@@ -41,13 +41,17 @@ public class ArtistService {
 
     public ArtistDTO scrap(String name) {
         ArtistDTO artistDTO = this.bounce(name);
-        Artist artist = artistMapping.dtoToEntity(artistDTO);
-        Artist savedArtist = artistRepository.save(artist);
-        return artistMapping.entityToDto(savedArtist);
+        return this.create(artistDTO);
     }
 
     public ArtistDTO get(String name) {
         Artist artist = artistRepository.findByName(name).orElse(null);
         return artistMapping.entityToDto(artist);
+    }
+
+    public ArtistDTO create(ArtistDTO artistDTO) {
+        Artist artist = artistMapping.dtoToEntity(artistDTO);
+        Artist savedArtist = artistRepository.save(artist);
+        return artistMapping.entityToDto(savedArtist);
     }
 }
