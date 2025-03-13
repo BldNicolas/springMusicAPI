@@ -27,7 +27,7 @@ public class ArtistService {
         this.deezerArtistMapping = deezerArtistMapping;
     }
 
-    public ArtistDTO bounceArtist(String name) {
+    public ArtistDTO bounce(String name) {
         String url = deezerUrl + "/artist/" + name;
 
         DeezerArtistDTO deezerArtistDTO = restClient.get()
@@ -39,14 +39,14 @@ public class ArtistService {
         return artistDTO;
     }
 
-    public ArtistDTO scrapArtist(String name) {
-        ArtistDTO artistDTO = this.bounceArtist(name);
+    public ArtistDTO scrap(String name) {
+        ArtistDTO artistDTO = this.bounce(name);
         Artist artist = artistMapping.dtoToEntity(artistDTO);
         Artist savedArtist = artistRepository.save(artist);
         return artistMapping.entityToDto(savedArtist);
     }
 
-    public ArtistDTO getArtist(String name) {
+    public ArtistDTO get(String name) {
         Artist artist = artistRepository.findByName(name).orElse(null);
         return artistMapping.entityToDto(artist);
     }

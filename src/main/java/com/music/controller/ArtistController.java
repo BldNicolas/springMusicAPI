@@ -3,10 +3,7 @@ package com.music.controller;
 import com.music.dto.ArtistDTO;
 import com.music.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/artist")
@@ -20,17 +17,17 @@ public class ArtistController {
     }
 
     @GetMapping("/{name}/bounce")
-    public ArtistDTO artist(@PathVariable String name) {
-        return artistService.bounceArtist(name);
+    public ArtistDTO bounce(@PathVariable String name) {
+        return artistService.bounce(name);
     }
 
     @GetMapping("/{name}/scrap")
-    public ArtistDTO scrapArtist(@PathVariable String name) {
-        return artistService.scrapArtist(name);
+    public ArtistDTO scrap(@PathVariable String name) {
+        return artistService.scrap(name);
     }
 
     @GetMapping("/{name}/get")
-    public ArtistDTO getArtist(@PathVariable String name) {
-        return artistService.getArtist(name);
+    public ArtistDTO get(@PathVariable String name) {
+        return artistService.get(name);
     }
 }
