@@ -2,6 +2,7 @@ package com.music.service;
 
 import com.music.dto.ArtistDTO;
 import com.music.dto.DeezerArtistDTO;
+import com.music.entity.Artist;
 import com.music.mapping.ArtistMapping;
 import com.music.mapping.DeezerArtistMapping;
 import com.music.repository.ArtistRepository;
@@ -38,13 +39,11 @@ public class ArtistService {
         return artistDTO;
     }
 
-    public Artist convertDeezerArtistToArtist(DeezerArtist deezerArtist) {
-        Artist artist = new Artist();
-        artist.setId((long) deezerArtist.getId());
-        artist.setName(deezerArtist.getName());
-        artist.setImage(deezerArtist.getPicture());
-        artist.setNbAlbum(deezerArtist.getNbAlbum());
-        return artist;
+    public ArtistDTO scrapArtist(String name) {
+        ArtistDTO artistDTO = this.bounceArtist(name);
+        Artist artist = artistMapping.dtoToEntity(artistDTO);
+        Artist savedArtist = artistRepository.save(artist);
+        return artistMapping.entityToDto(savedArtist);
     }
 
     public Artist getArtist(String name) {

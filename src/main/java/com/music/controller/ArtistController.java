@@ -24,9 +24,8 @@ public class ArtistController {
         return artistService.bounceArtist(name);
     }
 
-    @GetMapping("/{name}/get")
-    public Artist getArtist(@PathVariable String name) {
-        Artist artist = artistService.getArtist(name);
-        return artist;
+    @GetMapping("/{name}/scrap")
+    public ArtistDTO scrapArtist(@PathVariable String name) {
+        return artistService.scrapArtist(name);
     }
 }
