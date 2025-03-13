@@ -1,41 +1,41 @@
 package com.music.service;
 
-import com.music.entity.Artist;
-import com.music.entity.DeezerArtist;
+import com.music.dto.ArtistDTO;
+import com.music.dto.DeezerArtistDTO;
+import com.music.mapping.ArtistMapping;
+import com.music.mapping.DeezerArtistMapping;
 import com.music.repository.ArtistRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class ArtistService {
-
-    private final RestClient restClient;
-    private final String deezerUrl;
-
-    @Autowired
     private final ArtistRepository artistRepository;
+    private final ArtistMapping artistMapping;
+    private final RestClient restClient;
+    private final DeezerArtistMapping deezerArtistMapping;
 
-    public ArtistService(ArtistRepository artistRepository, ArtistMapping artistMapping, RestClient restClient, String deezerUrl) {
+    @Value("${deezer.url}")
+    private String deezerUrl;
+
+    public ArtistService(ArtistRepository artistRepository, ArtistMapping artistMapping, RestClient restClient, DeezerArtistMapping deezerArtistMapping) {
         this.artistRepository = artistRepository;
-        this.restClient = RestClient.create();
+        this.artistMapping = artistMapping;
         this.restClient = restClient;
+        this.deezerArtistMapping = deezerArtistMapping;
     }
 
-    public DeezerArtist bounceArtist(String name) {
+    public ArtistDTO bounceArtist(String name) {
         String url = deezerUrl + "/artist/" + name;
-        DeezerArtist deezerArtist = restClient.get()
+
+        DeezerArtistDTO deezerArtistDTO = restClient.get()
                 .uri(url)
                 .retrieve()
-                .body(DeezerArtist.class);
-        return deezerArtist;
-    }
+                .body(DeezerArtistDTO.class);
 
-    public Artist scrapArtist(String name) {
-        DeezerArtist deezerArtist = this.bounceArtist(name);
-        Artist artist = this.convertDeezerArtistToArtist(deezerArtist);
-        return artistRepository.save(artist);
+        ArtistDTO artistDTO = deezerArtistMapping.deezerArtistDTOToArtistDTO(deezerArtistDTO);
+        return artistDTO;
     }
 
     public Artist convertDeezerArtistToArtist(DeezerArtist deezerArtist) {

@@ -1,7 +1,6 @@
 package com.music.controller;
 
-import com.music.entity.Artist;
-import com.music.entity.DeezerArtist;
+import com.music.dto.ArtistDTO;
 import com.music.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,15 +20,8 @@ public class ArtistController {
     }
 
     @GetMapping("/{name}/bounce")
-    public DeezerArtist artist(@PathVariable String name) {
-        DeezerArtist deezerArtist = artistService.bounceArtist(name);
-        return deezerArtist;
-    }
-
-    @GetMapping("/{name}/scrap")
-    public Artist scrapArtist(@PathVariable String name) {
-        Artist artist = artistService.scrapArtist(name);
-        return artist;
+    public ArtistDTO artist(@PathVariable String name) {
+        return artistService.bounceArtist(name);
     }
 
     @GetMapping("/{name}/get")
