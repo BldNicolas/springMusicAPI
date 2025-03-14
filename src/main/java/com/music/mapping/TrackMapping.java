@@ -6,6 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TrackMapping {
+    private final ArtistMapping artistMapping;
+
+    public TrackMapping(ArtistMapping artistMapping) {
+        this.artistMapping = artistMapping;
+    }
+
     public Track dtoToEntity(TrackDTO trackDTO) {
         return Track.builder()
                 .idDeezer(trackDTO.getIdDeezer())
@@ -13,7 +19,7 @@ public class TrackMapping {
                 .link(trackDTO.getLink())
                 .duration(trackDTO.getDuration())
                 .rank(trackDTO.getRank())
-                .artist(trackDTO.getArtist())
+                .artist(artistMapping.dtoToEntity(trackDTO.getArtistDTO()))
                 .build();
     }
 
@@ -24,7 +30,7 @@ public class TrackMapping {
                 .link(track.getLink())
                 .duration(track.getDuration())
                 .rank(track.getRank())
-                .artist(track.getArtist())
+                .artistDTO(artistMapping.entityToDto(track.getArtist()))
                 .build();
     }
 }

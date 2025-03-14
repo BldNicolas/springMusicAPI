@@ -23,6 +23,7 @@ public class Track {
 
     private Integer duration;
 
+    @Column(name = "`rank`")
     private Integer rank;
 
     @ManyToOne

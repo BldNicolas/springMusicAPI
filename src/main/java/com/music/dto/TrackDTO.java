@@ -18,5 +18,5 @@ public class TrackDTO {
 
     private Integer rank;
 
-    private Artist artist;
+    private ArtistDTO artistDTO;
 }

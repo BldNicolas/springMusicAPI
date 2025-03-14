@@ -23,4 +23,9 @@ public class TrackController {
     public TrackDTO bounce(@PathVariable Integer id) {
         return trackService.bounce(id);
     }
+
+    @GetMapping("/{id}/scrap")
+    public TrackDTO scrap(@PathVariable Integer id) {
+        return trackService.scrap(id);
+    }
 }
