@@ -40,4 +40,9 @@ public class TrackController {
     public TrackDTO update(@PathVariable Integer id, @RequestBody TrackDTO trackDTO) {
         return trackService.update(id, trackDTO);
     }
+
+    @DeleteMapping("/{id}/delete")
+    public void delete(@PathVariable Integer id) {
+        trackService.delete(id);
+    }
 }

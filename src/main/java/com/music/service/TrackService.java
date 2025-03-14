@@ -92,4 +92,9 @@ public class TrackService {
         Track savedTrack = trackRepository.save(track);
         return trackMapping.entityToDto(savedTrack);
     }
+
+    public void delete(Integer id) {
+        Track track = trackRepository.findById(id).orElse(null);
+        trackRepository.delete(track);
+    }
 }
