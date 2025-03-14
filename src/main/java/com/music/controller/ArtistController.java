@@ -16,19 +16,19 @@ public class ArtistController {
         this.artistService = artistService;
     }
 
-    @GetMapping("/{name}/bounce")
-    public ArtistDTO bounce(@PathVariable String name) {
-        return artistService.bounce(name);
+    @GetMapping("/{id}/bounce")
+    public ArtistDTO bounce(@PathVariable Integer id) {
+        return artistService.bounce(id);
     }
 
-    @GetMapping("/{name}/scrap")
-    public ArtistDTO scrap(@PathVariable String name) {
-        return artistService.scrap(name);
+    @GetMapping("/{id}/scrap")
+    public ArtistDTO scrap(@PathVariable Integer id) {
+        return artistService.scrap(id);
     }
 
-    @GetMapping("/{name}/get")
-    public ArtistDTO get(@PathVariable String name) {
-        return artistService.get(name);
+    @GetMapping("/{id}/get")
+    public ArtistDTO get(@PathVariable Integer id) {
+        return artistService.get(id);
     }
 
     @PostMapping("/create")
