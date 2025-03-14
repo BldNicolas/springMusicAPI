@@ -67,4 +67,9 @@ public class TrackService {
 
         return trackMapping.entityToDto(savedTrack);
     }
+
+    public TrackDTO get(Integer id) {
+        Track track = trackRepository.findById(id).orElse(null);
+        return trackMapping.entityToDto(track);
+    }
 }

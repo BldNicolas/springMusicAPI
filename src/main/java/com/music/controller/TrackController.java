@@ -28,4 +28,9 @@ public class TrackController {
     public TrackDTO scrap(@PathVariable Integer id) {
         return trackService.scrap(id);
     }
+
+    @GetMapping("/{id}/get")
+    public TrackDTO get(@PathVariable Integer id) {
+        return trackService.get(id);
+    }
 }
