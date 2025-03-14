@@ -76,4 +76,20 @@ public class TrackService {
         Track savedTrack = trackRepository.save(track);
         return trackMapping.entityToDto(savedTrack);
     }
+
+    public TrackDTO update(Integer id, TrackDTO trackDTO) {
+        Track track = trackMapping.dtoToEntity(trackDTO);
+        track.setId(id);
+
+        Artist artist = artistRepository.findByName(track.getArtist().getName()).orElse(null);
+
+        if (artist == null) {
+            ArtistDTO artistDTO = artistService.create(trackDTO.getArtistDTO());
+            artist = artistRepository.findByName(artistDTO.getName()).orElse(null);
+        }
+        track.setArtist(artist);
+
+        Track savedTrack = trackRepository.save(track);
+        return trackMapping.entityToDto(savedTrack);
+    }
 }

@@ -35,4 +35,9 @@ public class TrackController {
     public TrackDTO create(@RequestBody TrackDTO trackDTO) {
         return trackService.create(trackDTO);
     }
+
+    @PostMapping("/{id}/update")
+    public TrackDTO update(@PathVariable Integer id, @RequestBody TrackDTO trackDTO) {
+        return trackService.update(id, trackDTO);
+    }
 }
