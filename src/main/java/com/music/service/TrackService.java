@@ -54,22 +54,26 @@ public class TrackService {
 
     public TrackDTO scrap(Integer id) {
         TrackDTO trackDTO = this.bounce(id);
-        Track track = trackMapping.dtoToEntity(trackDTO);
-
-        Artist artist = artistRepository.findByName(track.getArtist().getName()).orElse(null);
-
-        if (artist == null) {
-            ArtistDTO artistDTO = artistService.scrap(track.getArtist().getIdDeezer());
-            artist = artistRepository.findByName(artistDTO.getName()).orElse(null);
-        }
-        track.setArtist(artist);
-        Track savedTrack = trackRepository.save(track);
-
-        return trackMapping.entityToDto(savedTrack);
+        return this.create(trackDTO);
     }
 
     public TrackDTO get(Integer id) {
         Track track = trackRepository.findById(id).orElse(null);
         return trackMapping.entityToDto(track);
+    }
+
+    public TrackDTO create(TrackDTO trackDTO) {
+        Track track = trackMapping.dtoToEntity(trackDTO);
+
+        Artist artist = artistRepository.findByName(track.getArtist().getName()).orElse(null);
+
+        if (artist == null) {
+            ArtistDTO artistDTO = artistService.create(trackDTO.getArtistDTO());
+            artist = artistRepository.findByName(artistDTO.getName()).orElse(null);
+        }
+
+        track.setArtist(artist);
+        Track savedTrack = trackRepository.save(track);
+        return trackMapping.entityToDto(savedTrack);
     }
 }

@@ -3,10 +3,7 @@ package com.music.controller;
 import com.music.dto.TrackDTO;
 import com.music.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/track")
@@ -32,5 +29,10 @@ public class TrackController {
     @GetMapping("/{id}/get")
     public TrackDTO get(@PathVariable Integer id) {
         return trackService.get(id);
+    }
+
+    @PostMapping("/create")
+    public TrackDTO create(@RequestBody TrackDTO trackDTO) {
+        return trackService.create(trackDTO);
     }
 }
