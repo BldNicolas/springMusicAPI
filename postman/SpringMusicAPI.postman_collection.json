@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "e662c81e-a3f9-4cd1-a139-fcf002c212c2",
+		"name": "Spring Music API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29929401"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "BOUNCER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"Bouncer\",\n  \"password\": \"password\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n        \"id\": 3,\n        \"name\": \"ROLE_BOUNCER\"\n    }\n  ],\n  \"tokenExpiration\": \"2025-12-31T23:59:59\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/users/register",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SCRAPPER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"Scrapper\",\n  \"password\": \"password\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n        \"id\": 1,\n        \"name\": \"ROLE_SCRAPPER\"\n    }\n  ],\n  \"tokenExpiration\": \"2025-12-31T23:59:59\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/users/register",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CRUDER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"Cruder\",\n  \"password\": \"password\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n        \"id\": 2,\n        \"name\": \"ROLE_CRUDER\"\n    }\n  ],\n  \"tokenExpiration\": \"2025-12-31T23:59:59\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/users/register",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "BOUNCER",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"userToken\", jsonData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"DefaultBouncer\",\n    \"password\" : \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/login",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SCRAPPER",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"userToken\", jsonData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"DefaultScrapper\",\n    \"password\" : \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/login",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CRUDER",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"userToken\", jsonData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"DefaultCruder\",\n    \"password\" : \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/api/login",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bounce",
+			"item": [
+				{
+					"name": "Artist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{connectionPath}}/artist/1/bounce",
+							"host": [
+								"{{connectionPath}}"
+							],
+							"path": [
+								"artist",
+								"1",
+								"bounce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{connectionPath}}/track/3135556/bounce",
+							"host": [
+								"{{connectionPath}}"
+							],
+							"path": [
+								"track",
+								"3135556",
+								"bounce"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scrap",
+			"item": [
+				{
+					"name": "Artist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{connectionPath}}/artist/2/scrap",
+							"host": [
+								"{{connectionPath}}"
+							],
+							"path": [
+								"artist",
+								"2",
+								"scrap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{connectionPath}}/track/3135556/scrap",
+							"host": [
+								"{{connectionPath}}"
+							],
+							"path": [
+								"track",
+								"3135556",
+								"scrap"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crud",
+			"item": [
+				{
+					"name": "Artist",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{connectionPath}}/artist/1/get",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"artist",
+										"1",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idDeezer\": 123456,\n    \"name\": \"Imagine Dragons\",\n    \"image\": \"https://example.com/imagine_dragons.jpg\",\n    \"nbAlbum\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/artist/create",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"artist",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idDeezer\": 1,\n    \"name\": \"nicolas\",\n    \"image\": \"https://example.com/imagine_dragons.jpg\",\n    \"nbAlbum\": 99\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/artist/1/update",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"artist",
+										"1",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{connectionPath}}/artist/1/delete",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"artist",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Track",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{connectionPath}}/track/1/get",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"track",
+										"1",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idDeezer\": null,\n    \"title\": \"My Song\",\n    \"link\": \"https://www.deezer.com/track/3135556\",\n    \"duration\": 226,\n    \"rank\": 836570,\n    \"artistDTO\": {\n        \"idDeezer\": 999,\n        \"name\": \"My Artist\",\n        \"link\": \"https://www.deezer.com/artist/27\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/track/create",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"track",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idDeezer\": 3135556,\n    \"title\": \"coucou Song Title\",\n    \"link\": \"https://www.deezer.com/track/3135556\",\n    \"duration\": 230,\n    \"rank\": 900000,\n    \"artistDTO\": {\n        \"idDeezer\": 9999,\n        \"name\": \"Artist from update custom song\",\n        \"link\": \"https://www.deezer.com/artist/27\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{connectionPath}}/track/1/update",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"track",
+										"1",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{connectionPath}}/track/1/delete",
+									"host": [
+										"{{connectionPath}}"
+									],
+									"path": [
+										"track",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -24,8 +24,9 @@ Lancer la base de donnée via le dockerfile
 
 Lancer WebsiteApplication.java
 
-
 ## Routes API
+
+Pour tester les routes API il faut aller dans `./postman/` afin de trouver la collection et l'environnement nécessaire.
 
 ### User
 
